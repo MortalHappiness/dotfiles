@@ -13,4 +13,5 @@ _symlink_files/
 # Linux Distro specific files
 {{- if ne .chezmoi.osRelease.id "linuxmint" }}
 .local/share/nemo/
+scripts/applets/
 {{- end}}
