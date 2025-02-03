@@ -1,0 +1,38 @@
+[user]
+	name = Chi-Sheng Liu
+	email = chishengliu@chishengliu.com
+	signingkey = {{ onepasswordRead "op://mnkln5bbgyxgjqmaoqzts2ez6q/Git SSH Signing Key/public key" }}
+[branch]
+	autosetuprebase = always
+[core]
+	autocrlf = input
+	editor = vim
+[color]
+	ui = true
+	status = auto
+	branch = auto
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	rebase = true
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[init]
+	defaultBranch = main
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /opt/1Password/op-ssh-sign
+[commit]
+	gpgsign = true
+[rebase]
+	autosquash = true
+[push]
+	default = current
+[alias]
+	pushnew = push -u origin HEAD

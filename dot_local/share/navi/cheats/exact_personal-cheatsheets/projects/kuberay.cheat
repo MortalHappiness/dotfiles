@@ -1,0 +1,23 @@
+% kuberay
+
+# Install CRDs
+make -C ray-operator install
+
+# Compile the KubeRay operator
+make -C ray-operator build
+
+# Run the KubeRay operator outside the cluster
+./ray-operator/bin/manager -leader-election-namespace default -use-kubernetes-proxy
+
+# Run unit tests
+make -C ray-operator test
+
+# Run end-to-end tests
+make -C ray-operator test-e2e
+
+# Install KubeRay operator
+helm install kuberay-operator kuberay/kuberay-operator --namespace ray-system --version 1.2.2 --create-namespace
+
+# Install Ray Cluster
+helm install ray-cluster kuberay/ray-cluster --version 1.2.2
+

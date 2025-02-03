@@ -1,0 +1,27 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "c",
+    "cpp",
+    "json",
+    "python",
+    "javascript",
+    "javascriptreact",
+    "markdown",
+    "css",
+    "scss",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+    "go",
+    "graphql",
+    "prisma"
+  ],
+
+  "inlayHint.enable": false,
+
+  // coc-pyright
+  "python.formatting.autopep8Path": "/usr/bin/autopep8",
+
+  // coc-prisma
+  "prisma.prismaFmtBinPath": ""
+}

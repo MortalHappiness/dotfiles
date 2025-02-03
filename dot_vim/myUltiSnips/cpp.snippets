@@ -1,0 +1,38 @@
+extends c
+
+priority 1
+
+# ========================================
+
+snippet class "class" b
+class ${1:ClassName} {
+public:
+	$1();
+	$1(const $1&);
+	$1& operator=(const $1&);
+	~$1();
+private:
+
+};
+endsnippet
+
+snippet read "Read file" b
+${1:#include <fstream.h>}
+void read_file(const char *filename${2:, std::vector<int>& nums}) {
+	std::fstream fin(filename);
+	${3:int i;}
+	${4:fin >> i;}
+	fin.close();
+}
+$0
+endsnippet
+
+snippet write "Write file" b
+${1:#include <fstream.h>}
+void write_file(const char *filename${2:, const int n}) {
+	std::fstream fout;
+	fout.open(filename, std::ios::out);
+	${3:fout << n << "\n";}
+	fout.close()
+$0
+endsnippet

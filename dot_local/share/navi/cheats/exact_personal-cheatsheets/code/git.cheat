@@ -1,0 +1,28 @@
+% git
+
+# Ignore files without using .gitignore
+vi .git/info/exclude
+
+# Clone GitHub repo with access token
+git clone https://<token>@github.com/<owner>/<repo_name>.git
+
+# Commit without change codes
+git commit --amend --no-edit
+
+# Sign-off the last commit
+git commit --amend --no-edit --signoff
+
+# Add submodule
+git submodule add <repository> <path>
+
+# Initialize submodules
+git submodule update --init --recursive
+
+# Sync updates from submodule
+git submodule update --remote --merge
+
+# Clone repository with submodules
+git clone --resurse-submodules <repository>
+
+# Find the most recent common ancestor
+git merge-base <commit-1> <commit-2>

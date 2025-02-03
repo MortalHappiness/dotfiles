@@ -1,0 +1,7 @@
+% diff-so-fancy
+
+# Run diff-so-fancy to compare two files
+diff -u <file_1> <file_2> | diff-so-fancy
+
+# Run diff-so-fancy to compare two folders
+diff -r -u <folder_1> <folder_2> | diff-so-fancy
