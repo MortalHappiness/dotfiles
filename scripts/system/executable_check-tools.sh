@@ -74,7 +74,7 @@ check_tool() {
 }
 
 print_section "Essential"
-for tool in chezmoi git vim tmux fish fisher lazygit asdf direnv; do
+for tool in chezmoi git vim tmux fish fisher lazygit diff-so-fancy asdf direnv; do
   check_tool "$tool"
 done
 
