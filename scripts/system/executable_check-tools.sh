@@ -28,6 +28,13 @@ check_tool() {
         error_message='installed, but not set as the current shell. Run "chsh -s $(which fish)" to change the shell.'
       fi
       ;;
+    fisher)
+      if ! command -v fisher &>/dev/null; then
+        error_message="not installed"
+      elif ! fisher list &>/dev/null; then
+        error_message='installed, but plugins are not installed. Run "fisher install" to install plugins.'
+      fi
+      ;;
     *)
       if ! command -v "$tool" &>/dev/null; then
         error_message="not installed"
@@ -43,7 +50,7 @@ check_tool() {
 }
 
 print_section "Essential"
-for tool in chezmoi git vim tmux fish lazygit asdf direnv; do
+for tool in chezmoi git vim tmux fish fisher lazygit asdf direnv; do
   check_tool "$tool"
 done
 
