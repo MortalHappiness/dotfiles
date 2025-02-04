@@ -28,6 +28,17 @@ check_tool() {
         error_message='installed, but not set as the current shell. Run "chsh -s $(which fish)" to change the shell.'
       fi
       ;;
+    git)
+      if ! command -v git &>/dev/null; then
+        error_message="not installed"
+      else
+        required_version="2.34.0"
+        git_version=$(git --version | awk '{print $3}')
+        if [[ "$(printf "%s\n%s" "$required_version" "$git_version" | sort -V | head -n1)" == "$git_version" ]]; then
+          error_message="Git version ($git_version) is not greater than $required_version"
+        fi
+      fi
+      ;;
     fisher)
       if ! command -v fish &>/dev/null; then
         error_message="fish not installed"
