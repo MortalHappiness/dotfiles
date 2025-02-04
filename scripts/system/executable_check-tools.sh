@@ -29,9 +29,11 @@ check_tool() {
       fi
       ;;
     fisher)
-      if ! command -v fisher &>/dev/null; then
+      if ! command -v fish &>/dev/null; then
+        error_message="fish not installed"
+      elif ! fish -c "type -q fisher" &>/dev/null; then
         error_message="not installed"
-      elif ! fisher list &>/dev/null; then
+      elif ! fish -c "fisher list" &>/dev/null; then
         error_message='installed, but plugins are not installed. Run "fisher install" to install plugins.'
       fi
       ;;
