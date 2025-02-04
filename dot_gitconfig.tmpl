@@ -4,7 +4,7 @@
 	{{- if .isLocalMachine }}
 	signingkey = {{ onepasswordRead "op://mnkln5bbgyxgjqmaoqzts2ez6q/Git SSH Signing Key/public key" }}
 	{{- else }}
-	signingkey = {{ .gitSSHSigningKey }}
+	signingkey = {{ .chezmoi.homeDir }}/.ssh/id_ed25519.pub
 	{{- end }}
 [branch]
 	autosetuprebase = always

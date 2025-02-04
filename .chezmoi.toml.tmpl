@@ -4,6 +4,3 @@ umask = 0o22
 
 [data]
   isLocalMachine = {{ $isLocalMachine | toString -}}
-  {{- if not $isLocalMachine }}
-  gitSSHSigningKey = ""
-  {{- end }}
