@@ -39,6 +39,17 @@ check_tool() {
         fi
       fi
       ;;
+    vim)
+      if ! command -v vim &>/dev/null; then
+        error_message="not installed"
+      else
+        required_major_version=9
+        vim_version=$(vim --version | awk 'NR==1 {print $5}' | cut -d. -f1)
+        if [[ "$vim_version" -lt "$required_major_version" ]]; then
+          echo "❌ Vim version ($vim_version) is less than $required_major_version"
+        fi
+      fi
+      ;;
     fisher)
       if ! command -v fish &>/dev/null; then
         error_message="fish not installed"
