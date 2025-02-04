@@ -5,6 +5,17 @@ set fish_greeting
 set -g fish_key_bindings fish_hybrid_key_bindings
 
 # ========================================
+# PATH
+
+if not contains "$HOME/bin" $PATH
+  set -gx --append PATH "$HOME/bin"
+end
+
+if not contains "$HOME/.local/bin" $PATH
+  set -gx --append PATH "$HOME/.local/bin"
+end
+
+# ========================================
 # Aliases
 
 if type -q bat
@@ -78,16 +89,6 @@ end
 # direnv
 if type -q direnv
   direnv hook fish | source
-end
-
-# ========================================
-
-if not contains "$HOME/bin" $PATH
-  set -gx --append PATH "$HOME/bin"
-end
-
-if not contains "$HOME/.local/bin" $PATH
-  set -gx --append PATH "$HOME/.local/bin"
 end
 
 # ========================================
