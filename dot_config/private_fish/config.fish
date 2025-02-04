@@ -71,12 +71,18 @@ if type -q thefuck
 end
 
 # asdf
-if test -d $HOME/.asdf
-  source ~/.asdf/asdf.fish
+if test -z $ASDF_DATA_DIR
+  set _asdf_shims "$HOME/.asdf/shims"
+else
+  set _asdf_shims "$ASDF_DATA_DIR/shims"
 end
-if test -d $HOME/.asdf/plugins/golang
-  source ~/.asdf/plugins/golang/set-env.fish
+
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
 end
+set --erase _asdf_shims
 
 # navi
 if type -q navi
