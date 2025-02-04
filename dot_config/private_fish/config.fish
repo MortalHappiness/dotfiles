@@ -70,6 +70,27 @@ if type -q thefuck
   thefuck --alias | source
 end
 
+# navi
+if type -q navi
+  navi widget fish | source
+end
+
+# direnv
+if type -q direnv
+  direnv hook fish | source
+end
+
+# ========================================
+
+if not contains "$HOME/bin" $PATH
+  set -gx --append PATH "$HOME/bin"
+end
+
+if not contains "$HOME/.local/bin" $PATH
+  set -gx --append PATH "$HOME/.local/bin"
+end
+
+# ========================================
 # asdf
 if test -z $ASDF_DATA_DIR
   set _asdf_shims "$HOME/.asdf/shims"
@@ -83,16 +104,6 @@ if not contains $_asdf_shims $PATH
     set -gx --prepend PATH $_asdf_shims
 end
 set --erase _asdf_shims
-
-# navi
-if type -q navi
-  navi widget fish | source
-end
-
-# direnv
-if type -q direnv
-  direnv hook fish | source
-end
 
 # ========================================
 # Personal tools
