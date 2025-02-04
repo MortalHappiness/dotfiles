@@ -33,8 +33,8 @@ check_tool() {
         error_message="fish not installed"
       elif ! fish -c "type -q fisher" &>/dev/null; then
         error_message="not installed"
-      elif ! fish -c "fisher list" &>/dev/null; then
-        error_message='installed, but plugins are not installed. Run "fisher install" to install plugins.'
+      elif [[ $(fish -c "fisher list | wc -l") -eq 1 ]]; then
+        error_message='installed, but plugins are not installed. Run "fisher update" to install plugins.'
       fi
       ;;
     *)
