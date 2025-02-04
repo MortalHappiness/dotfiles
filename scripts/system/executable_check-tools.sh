@@ -25,7 +25,7 @@ check_tool() {
       if ! command -v fish &>/dev/null; then
         error_message="not installed"
       elif [[ "$SHELL" != *fish ]]; then
-        error_message="installed, but not set as the current shell"
+        error_message='installed, but not set as the current shell. Run "chsh -s $(which fish)" to change the shell.'
       fi
       ;;
     *)
@@ -43,7 +43,7 @@ check_tool() {
 }
 
 print_section "Essential"
-for tool in git vim tmux fish lazygit asdf direnv; do
+for tool in chezmoi git vim tmux fish lazygit asdf direnv; do
   check_tool "$tool"
 done
 
