@@ -11,6 +11,7 @@
 [core]
 	autocrlf = input
 	editor = vim
+	pager = diff-so-fancy | less --tabs=4 -RF
 [color]
 	ui = true
 	status = auto
@@ -42,3 +43,5 @@
 	default = current
 [alias]
 	pushnew = push -u origin HEAD
+[interactive]
+  diffFilter = diff-so-fancy --patch
