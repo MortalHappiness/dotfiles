@@ -1,13 +1,10 @@
 README.md
 _symlink_files/
 
-# The hostname of my personal machine starts with "mortalhappiness-"
-{{- if hasPrefix "mortalhappiness-" .chezmoi.hostname }}
-# Those files are ignored on my personal machine
+{{- if .isLocalMachine }}
 .bashrc
 .bash_profile
 {{- else }}
-# Those files are ignored on work machines
 .config/albert/
 {{- end }}
 
