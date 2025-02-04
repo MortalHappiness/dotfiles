@@ -196,7 +196,7 @@ set smartindent
 set tabstop=2 shiftwidth=2
 augroup my_tabwidth
   autocmd!
-  autocmd FileType c,cpp,make,python,snippets,sh,verilog,go,asm
+  autocmd FileType c,cpp,make,python,snippets,verilog,go,asm
         \ setlocal tabstop=4 shiftwidth=4
 augroup END
 
