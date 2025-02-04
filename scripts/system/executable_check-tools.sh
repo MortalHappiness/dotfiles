@@ -16,6 +16,8 @@ tools=(
   "eza"
   "fd"
   "bat"
+  "node"
+  "python"
 )
 
 for tool in "${tools[@]}"; do
