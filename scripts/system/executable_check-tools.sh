@@ -35,7 +35,7 @@ check_tool() {
         required_version="2.34.0"
         git_version=$(git --version | awk '{print $3}')
         if [[ "$(printf "%s\n%s" "$required_version" "$git_version" | sort -V | head -n1)" == "$git_version" ]]; then
-          error_message="Git version ($git_version) is not greater than $required_version"
+          error_message="installed, but version ($git_version) is not greater than $required_version"
         fi
       fi
       ;;
@@ -46,7 +46,7 @@ check_tool() {
         required_major_version=9
         vim_version=$(vim --version | awk 'NR==1 {print $5}' | cut -d. -f1)
         if [[ "$vim_version" -lt "$required_major_version" ]]; then
-          echo "❌ Vim version ($vim_version) is less than $required_major_version"
+          error_message="installed, but version ($vim_version) is less than $required_major_version"
         fi
       fi
       ;;
