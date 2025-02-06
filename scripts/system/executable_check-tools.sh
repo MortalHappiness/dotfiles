@@ -79,7 +79,7 @@ for tool in chezmoi git gh vim tmux fish fisher lazygit diff-so-fancy asdf diren
 done
 
 print_section "Programming"
-for tool in python node; do
+for tool in conda python node go rust gcc; do
   check_tool "$tool"
 done
 
@@ -89,7 +89,7 @@ for tool in fzf navi tldr; do
 done
 
 print_section "Enhancements"
-for tool in zoxide rg htop eza fd bat; do
+for tool in zoxide rg htop eza fd bat duf dust; do
   check_tool "$tool"
 done
 
@@ -99,6 +99,6 @@ for tool in docker lazydocker; do
 done
 
 print_section "Kubernetes"
-for tool in kubectl k9s helm minikube kind k3d; do
+for tool in kubectl k9s helm minikube kind k3d kustomize; do
   check_tool "$tool"
 done
