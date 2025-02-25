@@ -9,8 +9,8 @@ make develop
 # Start a Ray head node
 ray start --head --include-dashboard=True
 
-# Start a Ray head node (blocking)
-ray start --head --include-dashboard=True --block
+# Restart Ray cluster with debug level log
+ray stop --force && RAY_BACKEND_LOG_LEVEL=debug ray start --head --include-dashboard=True
 
 # Execute python script via Ray client
 RAY_ADDRESS='ray://localhost:10001' python <filename>
