@@ -29,3 +29,9 @@ git merge-base <commit-1> <commit-2>
 
 # Checkout to a remote branch locally
 git checkout -b <branch> origin/<branch>
+
+# Rebase to branch and use changes on that branch instead of local changes
+git rebase <branch> -X theirs
+
+# Rebase to branch and use local changes instead of the changes on that branch
+git rebase <branch> -X ours
