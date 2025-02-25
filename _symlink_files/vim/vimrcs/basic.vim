@@ -359,6 +359,9 @@ nnoremap <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 " Indent current buffer
 command! -nargs=0 Indent :call Indent()
 
+" Toggle vertical/horizontal split
+nnoremap <C-w><Space> :call ToggleSplit()<CR>
+
 "}}}
 """"""""""""""""""""""""""""""""""""""""
 " => Helper_functions
@@ -445,6 +448,22 @@ endfunction
 function! Indent()
   call Preserve('normal gg=G')
 endfunction
+
+" Toggle vertical/horizontal split
+if !exists("g:split_layout")
+  let g:split_layout = 'horizontal'
+endif
+
+function! ToggleSplit()
+  if g:split_layout == 'vertical'
+    wincmd t | wincmd K
+    let g:split_layout = 'horizontal'
+  else
+    wincmd t | wincmd H
+    let g:split_layout = 'vertical'
+  endif
+endfunction
+
 
 "}}}
 """"""""""""""""""""""""""""""""""""""""

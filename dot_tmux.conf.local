@@ -397,6 +397,16 @@ bind k if -F '#{pane_at_top}'    '' 'select-pane -U'
 bind h if -F '#{pane_at_left}'   '' 'select-pane -L'
 bind l if -F '#{pane_at_right}'  '' 'select-pane -R'
 
+# toggle vertical/horizontal split
+
+set -g @toggle_layout "even-vertical"
+bind Space run-shell " \
+    if [ \"$(tmux show-option -gqv @toggle_layout)\" = \"even-horizontal\" ]; then \
+        tmux set-option -g @toggle_layout even-vertical && tmux select-layout even-vertical; \
+    else \
+        tmux set-option -g @toggle_layout even-horizontal && tmux select-layout even-horizontal; \
+    fi"
+
 # swap pane, no-wrap
 #unbind J
 #unbind K
