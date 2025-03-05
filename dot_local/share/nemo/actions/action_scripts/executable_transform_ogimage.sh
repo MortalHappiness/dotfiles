@@ -6,6 +6,18 @@ folder=$(dirname "${input_file}")
 extension="${input_file##*.}"
 output_file=$(mktemp --suffix=".${extension}")
 
+# If the file is webp, convert it to jpg first
+if [ "${extension}" == "webp" ]; then
+    output_file=$(mktemp --suffix=".jpg")
+    convert "${input_file}" "${output_file}"
+    if [ $? -ne 0 ]; then
+        notify-send "Transform to ogimage" "Failed to convert webp image ${input_file} to jpg"
+        exit 1
+    fi
+    input_file="${output_file}"
+    extension="jpg"
+fi
+
 if [ -e "${folder}/cover" ]; then
     notify-send "Transform to ogimage" "${folder}/cover already exists"
     exit 1
