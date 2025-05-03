@@ -1,0 +1,9 @@
+[Nemo Action]
+Name=Transform to MP4
+Comment=Transform videos to mp4 format
+Exec=<action_scripts/transform_to_mp4.sh %F>
+Icon-Name=video-x-generic-symbolic
+Selection=s
+Extensions=any
+EscapeSpaces=true
+Dependencies=ffmpeg
