@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Get the current branch being pushed
+current_branch=$(git symbolic-ref --short HEAD)
+
+# List of protected branches
+protected_branches="main master"
+
+for branch in $protected_branches; do
+  if [ "$current_branch" = "$branch" ]; then
+    echo "❌ Push to '$branch' is disabled. Please open a pull request instead."
+    exit 1
+  fi
+done
+
+exit 0
