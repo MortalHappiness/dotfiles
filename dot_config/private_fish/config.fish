@@ -104,6 +104,8 @@ if not contains $_asdf_shims $PATH
 end
 set --erase _asdf_shims
 
+set -x ASDF_NODEJS_AUTO_ENABLE_COREPACK 1
+
 # ========================================
 # Personal tools
 
