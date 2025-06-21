@@ -103,7 +103,7 @@ augroup my_textwidth
   autocmd!
   autocmd FileType text
         \ setlocal textwidth=78
-  autocmd FileType html,json,qf,markdown
+  autocmd FileType html,json,qf,markdown,text
         \ setlocal textwidth=0
 augroup END
 
