@@ -41,6 +41,7 @@ if type -q eza
   alias ls="eza -F"
   alias ll="eza -F --long --header --group"
   alias la="eza -F --long --header --group --all"
+  alias tree="eza -T"
 end
 
 if type -q rg
