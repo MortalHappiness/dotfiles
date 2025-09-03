@@ -35,3 +35,9 @@ git rebase <branch> -X theirs
 
 # Rebase to branch and use local changes instead of the changes on that branch
 git rebase <branch> -X ours
+
+# Use shared prepare-commit-msg hook
+ln -s $(realpath ~/scripts/git-hooks/prepare-commit-msg) .git/hooks/prepare-commit-msg
+
+# Use shared commit-msg hook to signoff messages
+ln -s $(realpath ~/scripts/git-hooks/commit-msg) .git/hooks/commit-msg
