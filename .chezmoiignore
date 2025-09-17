@@ -5,7 +5,30 @@ _symlink_files/
 .bashrc
 .bash_profile
 {{- else }}
-.config/albert/
+
+# Use whitelist for remote machine
+*
+!.vimrc
+!.tmux.conf
+!.tmux.conf.local
+!.gitconfig
+!.bashrc
+!.bash_profile
+
+!.vim/
+!scripts/
+
+!.config/
+.config/*
+!.config/lazygit/
+!.config/navi/
+
+!.local/
+.local/*
+!.local/share/
+.local/share/*
+!.local/share/navi/
+
 {{- end }}
 
 # Linux Distro specific files
