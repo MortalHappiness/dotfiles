@@ -1,5 +1,7 @@
 {{- $isLocalMachine :=  hasPrefix "mortalhappiness-" .chezmoi.hostname -}}
 
+{{- warnf "Is local machine? %v" $isLocalMachine -}}
+
 umask = 0o22
 
 [data]
