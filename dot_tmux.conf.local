@@ -505,7 +505,7 @@ set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 
 # Override tmux-plugins/tmux-yank options
-set -g @copy_mode_yank 'Enter'
+set -g @yank_selection_mouse 'clipboard'
 
 # -- custom variables ----------------------------------------------------------
 
