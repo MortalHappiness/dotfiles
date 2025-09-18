@@ -22,3 +22,13 @@ if ! command -v diff-so-fancy &>/dev/null; then
   chmod +x diff-so-fancy
   mv diff-so-fancy "$HOME"/bin/
 fi
+
+# bat
+if ! command -v bat &>/dev/null; then
+  VERSION=$(parse_latest_release "sharkdp/bat")
+  # https://github.com/sharkdp/bat/releases/download/v0.25.0/bat-v0.25.0-x86_64-unknown-linux-gnu.tar.gz
+  curl -Lo bat.tar.gz "https://github.com/sharkdp/bat/releases/download/v${VERSION}/bat-v${VERSION}-x86_64-unknown-linux-gnu.tar.gz"
+  tar xf bat.tar.gz
+  mv bat-v${VERSION}-x86_64-unknown-linux-gnu/bat "$HOME"/bin/
+  rm -rf bat-v${VERSION}-x86_64-unknown-linux-gnu bat.tar.gz
+fi

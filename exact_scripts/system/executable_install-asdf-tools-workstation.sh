@@ -8,7 +8,6 @@ plugins=(
   "ripgrep"
   "direnv"
   "eza"
-  "bat"
   "fd"
   "duf"
   "dust"
