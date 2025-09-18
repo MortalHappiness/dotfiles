@@ -1,0 +1,4 @@
+[".git-prompt.sh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/git/git/refs/heads/master/contrib/completion/git-prompt.sh"
+    refreshPeriod = "168h"

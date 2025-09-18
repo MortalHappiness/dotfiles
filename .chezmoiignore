@@ -4,6 +4,7 @@ _symlink_files/
 {{- if .isLocalMachine }}
 .bashrc
 .bash_profile
+.git-prompt.sh
 {{- else }}
 
 # Use whitelist for remote machine
@@ -14,6 +15,7 @@ _symlink_files/
 !.gitconfig
 !.bashrc
 !.bash_profile
+!.git-prompt.sh
 
 !.vim/
 !scripts/
