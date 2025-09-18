@@ -17,17 +17,9 @@ alias fgrep='fgrep --color=auto'
 alias diff='diff --color=auto'
 alias vi='vim'
 
+# ========================================
+# Common settings with programs
 
-if [ -d "$HOME/.asdf" ]; then
-    . "$HOME/.asdf/asdf.sh"
-    . "$HOME/.asdf/completions/asdf.bash"
-fi
-
-if command -v lazygit &> /dev/null; then
-    alias lg='lazygit'
-fi
-
-# common settings with programs
 ulimit -S -c 0 # core dumpsize
 umask 022
 
@@ -35,13 +27,99 @@ umask 022
 PS1='[\[\033[01;32m\]\u\[\033[01;31m\]@\H \[\033[01;34m\]\w\[\033[00m\]]\$ '
 
 pathadd() {
-    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
-        export PATH="$1${PATH:+":$PATH"}"
-    fi
+  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+    export PATH="$1${PATH:+":$PATH"}"
+  fi
 }
 
 pathadd "$HOME/bin"
 pathadd "$HOME/.local/bin"
+
+# ========================================
+# asdf
+
+if [ -d "$HOME/.asdf" ]; then
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+  . <(asdf completion bash)
+fi
+
+# ========================================
+# Aliases
+
+if command -v bat >/dev/null; then
+  alias cat="bat"
+elif command -v batcat >/dev/null; then
+  alias bat="batcat"
+  alias cat="batcat"
+fi
+
+# fd
+if command -v fdfind >/dev/null; then
+  alias fd="fdfind"
+fi
+
+# du
+if command -v dust >/dev/null; then
+  alias du="dust"
+fi
+
+# df
+if command -v duf >/dev/null; then
+  alias df="duf"
+fi
+
+# ls
+if command -v eza >/dev/null; then
+  alias ls="eza -F"
+  alias ll="eza -F --long --header --group"
+  alias la="eza -F --long --header --group --all"
+  alias tree="eza -T"
+fi
+
+# grep
+if command -v rg >/dev/null; then
+  alias grep="rg"
+fi
+
+# lazygit
+if command -v lazygit >/dev/null; then
+  alias lg="lazygit"
+fi
+
+# chezmoi
+if command -v chezmoi >/dev/null; then
+  alias dotfile="chezmoi"
+fi
+
+# ========================================
+# External tools
+
+# fzf
+export FZF_DEFAULT_OPTS='
+  --layout=reverse
+  --color=bg+:#293739,bg:#1B1D1E,border:#808080,spinner:#E6DB74,hl:#7E8E91,fg:#F8F8F2,header:#7E8E91,info:#A6E22E,pointer:#A6E22E,marker:#F92672,fg+:#F8F8F2,prompt:#F92672,hl+:#F92672
+'
+
+if command -v fzf >/dev/null; then
+  eval "$(fzf --bash)"
+fi
+
+# zoxide
+if command -v zoxide >/dev/null; then
+  eval "$(zoxide init bash)"
+fi
+
+# navi
+if command -v navi >/dev/null; then
+  eval "$(navi widget bash)"
+fi
+
+# direnv
+if command -v direnv >/dev/null; then
+  eval "$(direnv hook bash)"
+fi
+
+# ========================================
 
 # Custom bashrc settings
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
