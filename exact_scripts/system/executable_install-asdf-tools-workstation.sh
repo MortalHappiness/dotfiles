@@ -4,19 +4,14 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$DIR"/install-helper.sh
 
 plugins=(
-  "lazydocker"
   "fzf"
+  "ripgrep"
+  "direnv"
+  "eza"
+  "bat"
+  "fd"
+  "duf"
   "dust"
-  "nodejs"
-  "golang"
-  "rust"
-  "kubectl"
-  "k9s"
-  "helm"
-  "minikube"
-  "kind"
-  "k3d"
-  "kustomize"
 )
 
 install_asdf_plugins "${plugins[@]}"
