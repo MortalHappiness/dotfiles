@@ -1,21 +1,13 @@
 #!/usr/bin/env bash
 
-if [ ! -d "$HOME"/bin ]; then
-  mkdir "$HOME"/bin
-fi
+# Shared user tools
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+bash "$DIR"/install-shared-user-tools.sh
 
 # fisher
 if ! fish -c "type -q fisher" &>/dev/null; then
     fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
     fish -c 'fisher update'
-fi
-
-# zoxide
-curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
-
-# navi
-if ! command -v navi &>/dev/null; then
-    BIN_DIR="$HOME"/bin bash <(curl -sL https://raw.githubusercontent.com/denisidoro/navi/master/scripts/install)
 fi
 
 # miniforge
