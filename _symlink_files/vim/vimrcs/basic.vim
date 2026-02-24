@@ -56,7 +56,7 @@ if has('mouse')
 endif
 
 " Copy to system clipboard
-if has('unnamedplus')
+if has('unnamedplus') && (has('gui_running') || exists('$DISPLAY') || exists('$WAYLAND_DISPLAY'))
   set clipboard=unnamedplus
 endif
 
