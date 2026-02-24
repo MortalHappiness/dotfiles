@@ -1,8 +1,11 @@
-{{- $isLocalMachine :=  hasPrefix "mortalhappiness-" .chezmoi.hostname -}}
+{{ $isLocalMachine :=  hasPrefix "mortalhappiness-" .chezmoi.hostname }}
+{{ $useVimPlugins := promptBoolOnce . "useVimPlugins" "Use Vim Plugins" }}
 
 {{- warnf "Is local machine? %v" $isLocalMachine -}}
+{{- warnf "Use Vim plugins? %v" $useVimPlugins -}}
 
 umask = 0o22
 
 [data]
-  isLocalMachine = {{ $isLocalMachine | toString -}}
+  isLocalMachine = {{ $isLocalMachine | toString }}
+  useVimPlugins = {{ $useVimPlugins | toString }}
