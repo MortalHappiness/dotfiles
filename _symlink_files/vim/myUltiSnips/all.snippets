@@ -83,7 +83,10 @@ def make_box(twidth, bwidth=None, is_closed=True):
 
 def make_line(length = 40):
 	b, m, e, i = (s.strip() for s in get_comment_format())
-	ret = b + " " + "=" * length
+	comment_length = len(b) + 1
+	if b != e:
+		comment_length += len(e) + 1
+	ret = b + " " + "=" * (length - comment_length)
 	if b != e:
 		ret += " " + e
 	return ret
@@ -93,7 +96,7 @@ endglobal
 # ========================================
 
 snippet line "A line consists of serveral ="
-`!p snip.rv = make_line()`
+`!p snip.rv = make_line(76)`
 $0
 endsnippet
 
@@ -104,8 +107,9 @@ endsnippet
 
 snippet box "A full-width comment box with the right side open and text left-aligned" b
 `!p
-if not snip.c:
-	width = int(vim.eval("&textwidth - (virtcol('.') == 1 ? 0 : virtcol('.'))")) or 71
+#if not snip.c:
+#    width = int(vim.eval("&textwidth - (virtcol('.') == 1 ? 0 : virtcol('.'))")) or 71
+width=76
 box = make_box(len(t[1]), width, is_closed=False)
 snip.rv = box[0]
 snip += box[1]
