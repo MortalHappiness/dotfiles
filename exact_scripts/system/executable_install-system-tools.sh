@@ -13,8 +13,7 @@ sudo apt install -y \
   bat \
   fd-find \
   direnv \
-  duf \
-  tealdeer
+  duf
 
 # fish
 sudo chsh -s $(which fish) "$USER"
