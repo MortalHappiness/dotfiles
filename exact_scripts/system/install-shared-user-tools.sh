@@ -34,3 +34,17 @@ if ! command -v asdf &>/dev/null; then
   mv asdf "$HOME"/bin/
   rm asdf.tar.gz
 fi
+
+# stow
+if ! command -v stow &>/dev/null; then
+  curl -Lo stow.tar.gz https://ftp.gnu.org/gnu/stow/stow-latest.tar.gz
+  mkdir stow
+  tar xf stow.tar.gz --strip-components=1 -C stow
+  mv stow "$HOME"
+  rm stow.tar.gz
+  cd "$HOME"/stow
+  ./configure --prefix="$PWD"/_local
+  make
+  make install
+  ln -s "$HOME"/stow/_local/bin/stow "$HOME"/bin/stow
+fi

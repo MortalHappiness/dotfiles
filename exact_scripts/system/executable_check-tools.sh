@@ -84,7 +84,7 @@ for tool in conda python node go rust gcc; do
 done
 
 print_section "Utilities"
-for tool in fzf navi; do
+for tool in fzf navi stow; do
   check_tool "$tool"
 done
 
